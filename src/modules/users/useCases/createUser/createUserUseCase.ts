@@ -17,7 +17,7 @@ export class CreateUserUseCase{
         }
 
         // validação se usuario ja existe
-        const clientAlreadyExist = await prisma.users.findFirst({
+        const userAlreadyExist = await prisma.users.findFirst({
             where:{
                 username:{
                     equals: username,
@@ -26,7 +26,7 @@ export class CreateUserUseCase{
             },
         })
 
-        if(clientAlreadyExist){
+        if(userAlreadyExist){
             throw new Error('User already exist')
         }
 
