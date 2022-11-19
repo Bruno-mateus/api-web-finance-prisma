@@ -1,4 +1,4 @@
-import {prisma} from '../../database/prismaClient'
+import {prisma} from '../../../../database/prismaClient'
 import {v4 as uuid} from 'uuid'
 
 

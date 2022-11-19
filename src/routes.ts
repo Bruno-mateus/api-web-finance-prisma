@@ -1,9 +1,9 @@
 import { Router } from "express";
 import {ensureAthenticate} from './middlewares/ensureAuthenticate'
 import { CreateUserController } from "./modules/users/useCases/createUser/createUserController";
-import {AuthenticateUserController} from './modules/accounts/AuthenticateUser/AuthenticateUserController'
-import {GetBalanceController} from './modules/accounts/GetBalance/GetBalanceController'
-import {TransactionController} from './modules/transactions/TransactionController'
+import {AuthenticateUserController} from './modules/accounts/useCases/AuthenticateUser/AuthenticateUserController'
+import {GetBalanceController} from './modules/accounts/useCases/GetBalance/GetBalanceController'
+import {TransactionController} from './modules/transactions/useCases/CreateTransaction/TransactionController'
 
 const routes = Router()
 
