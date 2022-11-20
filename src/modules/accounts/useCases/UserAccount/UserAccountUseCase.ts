@@ -4,7 +4,7 @@ interface IGetBalance{
     user_id:string
 }
 
-export class GetBalanceUseCase{
+export class UserAccountUseCase{
     async execute({user_id}:IGetBalance){
 
        
@@ -24,6 +24,11 @@ export class GetBalanceUseCase{
 
         if(!account) throw new Error("Account not exist")
 
-        return account.balance
+        return {
+            account:{
+            owner:user.username,
+            balance:account.balance
+            }
+        }
     }
 }

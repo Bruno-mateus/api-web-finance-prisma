@@ -2,10 +2,11 @@ import {prisma} from '../../../../database/prismaClient'
 
  interface IListTranscations{
     user_id:string
+    order?:'asc' | 'desc'
 }
 
-export class ListAllTransactionsUseCase{
-    async execute({user_id}:IListTranscations){
+export class ListTransactionsUseCase{
+    async execute({user_id,order='asc'}:IListTranscations){
 
         const user = await prisma.users.findFirst({
             where:{
@@ -42,12 +43,32 @@ export class ListAllTransactionsUseCase{
                     
                 
             },
+            orderBy:{
+                createdAt:order
+            }
 
           
         })
 
-   
+        const transactionsCredited = await prisma.transactions.findMany({
+            where:{
+                fk_creditedAccountId:account.id
+            },
+            
+        })
 
-        return allTransactions
+        const transactionsDebited = await prisma.transactions.findMany({
+            where:{
+                fk_debitedAccountId:account.id
+            }
+        })
+
+
+
+        return [
+            allTransactions,
+            transactionsCredited,
+            transactionsDebited,
+    ]
     }
 }
