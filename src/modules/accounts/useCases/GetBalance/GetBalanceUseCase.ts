@@ -6,6 +6,8 @@ interface IGetBalance{
 
 export class GetBalanceUseCase{
     async execute({user_id}:IGetBalance){
+
+       
         const user = await prisma.users.findFirst({
             where:{
                 id:user_id
@@ -18,6 +20,7 @@ export class GetBalanceUseCase{
                 id:user.fk_accountId
             }
         })
+
 
         if(!account) throw new Error("Account not exist")
 

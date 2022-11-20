@@ -21,7 +21,7 @@ export class AuthenticateUserUseCase{
        if(!passwordMatch) throw new Error("Username or password incorrect")
        
        //gerar token
-       const token = sign({username},"eae694fc09c8f40eada175e66c50ec14",{
+       const token = sign({user},"eae694fc09c8f40eada175e66c50ec14",{
         subject:user.id,
         expiresIn:"1d"
        })

@@ -4,8 +4,10 @@ import { GetBalanceUseCase } from "./GetBalanceUseCase";
  
  export class GetBalanceController{
     async handle(req:Request, res:Response){
-        const {user_id} = req   
+        
+      const {user_id} = req
 
+        console.log(user_id)
         const getBalanceUseCase = new GetBalanceUseCase()
 
        const result = await getBalanceUseCase.execute({user_id})

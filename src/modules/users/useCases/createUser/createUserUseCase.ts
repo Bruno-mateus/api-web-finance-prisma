@@ -22,7 +22,7 @@ export class CreateUserUseCase{
                 username:{
                     equals: username,
                     mode:"insensitive"
-                }
+                },
             },
         })
 

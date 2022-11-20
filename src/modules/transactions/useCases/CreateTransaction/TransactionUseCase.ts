@@ -12,7 +12,7 @@ export class TransactionUseCase{
 
 
 
-    async execute({id,username,cashOut}){
+    async execute({id,username,cashOut}:ITransaction){
 
         const userCashOut = await prisma.users.findFirst({
             where:{
